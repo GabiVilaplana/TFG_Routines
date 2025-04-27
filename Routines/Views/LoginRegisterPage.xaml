@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Routines.LoginRegisterPage">
+
+    <AbsoluteLayout>
+
+        <!-- Imagen de fondo -->
+        <Image Source="blue.png"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All" />
+
+        <!-- Contenido encima -->
+        <VerticalStackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="20"
+                             Padding="35">
+
+            <Border Stroke="#DDD" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 20"
+                    WidthRequest="320" Padding="25">
+                <VerticalStackLayout Spacing="20">
+
+                    <Label Text="Welcome 👋"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="#263238" />
+
+                    <Border Stroke="#CCC" StrokeThickness="1" StrokeShape="RoundRectangle 10">
+                        <Entry x:Name="UsernameEntry"
+                               Placeholder="Username"
+                               BackgroundColor="#F5F5F5"
+                               TextColor="#212121"
+                               HeightRequest="50"
+                               Margin="5" />
+                    </Border>
+
+                    <Border Stroke="#CCC" StrokeThickness="1" StrokeShape="RoundRectangle 10">
+                        <Entry x:Name="PasswordEntry"
+                               Placeholder="Password"
+                               IsPassword="True"
+                               BackgroundColor="#F5F5F5"
+                               TextColor="#212121"
+                               HeightRequest="50"
+                               Margin="5" />
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                        <Button Text="Login"
+                                WidthRequest="100"
+                                BackgroundColor="#90CAF9"
+                                TextColor="White"
+                                CornerRadius="12"
+                                Clicked="OnLoginClicked" />
+
+                        <Button Text="Register"
+                                WidthRequest="100"
+                                BackgroundColor="#A5D6A7"
+                                TextColor="White"
+                                CornerRadius="12"
+                                Clicked="OnRegisterClicked" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+
+    </AbsoluteLayout>
+</ContentPage>

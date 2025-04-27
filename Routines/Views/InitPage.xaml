@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Routines.Views.InitPage">
+
+    <AbsoluteLayout>
+
+        <!-- Imagen de fondo -->
+        <Image Source="blue.png"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All" />
+
+        <!-- Contenido centrado -->
+        <VerticalStackLayout Spacing="20"
+                             AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             HorizontalOptions="Center">
+
+            <Image Source="logo.png"
+                   WidthRequest="150"
+                   HeightRequest="150"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Welcome to Routines"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="#222"
+                   HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+
+        <!-- Tap to continue abajo -->
+        <Label x:Name="TapToContinueLabel"
+               Text="Tap to continue"
+               FontSize="16"
+               TextColor="Gray"
+               AbsoluteLayout.LayoutBounds="0.5,1, -1, -1"
+               AbsoluteLayout.LayoutFlags="PositionProportional"
+               Margin="0,0,0,30">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapArea_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+
+    </AbsoluteLayout>
+</ContentPage>
