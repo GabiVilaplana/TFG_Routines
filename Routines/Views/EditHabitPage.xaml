@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Routines.Views.EditHabitPage"
+             Title="Editar Hábito">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Editar hábito" FontSize="24" FontAttributes="Bold" />
+
+            <Entry x:Name="TituloEntry" Placeholder="Título" />
+
+            <Label Text="Categoría" />
+            <Picker x:Name="CategoriaPicker" Title="Selecciona una categoría" />
+
+            <Label Text="Frecuencia" />
+            <Picker x:Name="FrecuenciaPicker" Title="Selecciona la frecuencia" />
+
+            <Button Text="Guardar cambios" Clicked="OnGuardarCambiosClicked"
+                    BackgroundColor="#4CAF50" TextColor="White" />
+
+            <Button Text="Eliminar hábito" Clicked="OnEliminarClicked"
+                    BackgroundColor="Red" TextColor="White" />
+
+            <Button Text="Cancelar" Clicked="OnCancelarClicked"
+                    BackgroundColor="#E0E0E0" TextColor="Black" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

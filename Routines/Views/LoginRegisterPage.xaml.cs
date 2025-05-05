@@ -16,7 +16,8 @@ namespace Routines
             if (user != null)
             {
                 await DisplayAlert("Éxito", $"Bienvenido {user.Usuario}", "OK");
-                await Shell.Current.GoToAsync("//MainPage");
+                Routines.Utils.Session.UsuarioActual = user;
+                Application.Current.MainPage = new NavigationPage(new Routines.Views.MainMenuPage());
             }
             else
             {
@@ -26,14 +27,25 @@ namespace Routines
 
         private async void OnRegisterClicked(object sender, EventArgs e)
         {
-            var nuevoUsuario = new Models.User
+            try
             {
-                Usuario = UsernameEntry.Text,
-                Contraseña = PasswordEntry.Text
-            };
+                var nuevoUsuario = new Models.User
+                {
+                    Usuario = UsernameEntry.Text,
+                    Contraseña = PasswordEntry.Text
+                };
 
-            await App.Database.AddUserAsync(nuevoUsuario);
-            await DisplayAlert("Registrado", "Usuario creado correctamente", "OK");
+                await App.Database.AddUserAsync(nuevoUsuario);
+                await DisplayAlert("Registrado", "Usuario creado correctamente", "OK");
+            }
+            catch (ArgumentException ex)
+            {
+                await DisplayAlert("Validación", ex.Message, "OK");
+            }
+            catch (InvalidOperationException ex)
+            {
+                await DisplayAlert("Duplicado", ex.Message, "OK");
+            }
         }
     }
 }

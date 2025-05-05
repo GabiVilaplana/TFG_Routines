@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Routines.Views.InitPage">
 
@@ -8,21 +7,29 @@
         <!-- Imagen de fondo -->
         <Image Source="blue.png"
                Aspect="AspectFill"
-               AbsoluteLayout.LayoutBounds="0,0,1,1"
-               AbsoluteLayout.LayoutFlags="All" />
+               AbsoluteLayout.LayoutBounds="0,0,7,1"
+               AbsoluteLayout.LayoutFlags="All">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackgroundImage_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
 
-        <!-- Contenido centrado -->
+            <!-- Contenido desplazado hacia arriba -->
         <VerticalStackLayout Spacing="20"
-                             AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                             AbsoluteLayout.LayoutBounds="0.5,0.17,-1,-1"
                              AbsoluteLayout.LayoutFlags="PositionProportional"
                              HorizontalOptions="Center">
 
-            <Image Source="logo.png"
+            <Image x:Name="LogoImage"
+                   Source="logo.png"
                    WidthRequest="150"
-                   HeightRequest="150"
-                   HorizontalOptions="Center"/>
+                   HeightRequest="150">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="LogoImage_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
 
-            <Label Text="Welcome to Routines"
+            <Label Text="Welcome"
                    FontSize="32"
                    FontAttributes="Bold"
                    TextColor="#222"

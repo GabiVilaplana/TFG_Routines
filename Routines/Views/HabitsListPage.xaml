@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Routines.Views.HabitsListPage"
+             Title="Mis Hábitos">
+
+    <VerticalStackLayout Padding="20">
+        <ListView x:Name="HabitsList" ItemSelected="OnHabitSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
+                            <Label Text="{Binding Titulo}" 
+                                   VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="16" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label x:Name="EmptyMessage"
+               Text="Todavía no has creado ningún hábito."
+               TextColor="Gray"
+               FontAttributes="Italic"
+               HorizontalOptions="Center"
+               IsVisible="False" /> 
+    </VerticalStackLayout>
+</ContentPage>

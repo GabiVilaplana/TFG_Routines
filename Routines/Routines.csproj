@@ -60,7 +60,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+	  <AndroidResource Remove="Platforms\Android\NewFolder1\**" />
+	  <AndroidResource Remove="Platforms\Android\NewFolder2\**" />
+	  <Compile Remove="Platforms\Android\NewFolder1\**" />
+	  <Compile Remove="Platforms\Android\NewFolder2\**" />
+	  <EmbeddedResource Remove="Platforms\Android\NewFolder1\**" />
+	  <EmbeddedResource Remove="Platforms\Android\NewFolder2\**" />
+	  <MauiCss Remove="Platforms\Android\NewFolder1\**" />
+	  <MauiCss Remove="Platforms\Android\NewFolder2\**" />
+	  <MauiXaml Remove="Platforms\Android\NewFolder1\**" />
+	  <MauiXaml Remove="Platforms\Android\NewFolder2\**" />
+	  <None Remove="Platforms\Android\NewFolder1\**" />
+	  <None Remove="Platforms\Android\NewFolder2\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 	</ItemGroup>
@@ -76,7 +91,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AddHabitPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EditHabitPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\HabitsListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginRegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MainMenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
