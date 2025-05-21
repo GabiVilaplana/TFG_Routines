@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Routines.Views.ProgressPage"
+             Title="Estadísticas">
+
+    <AbsoluteLayout>
+        <Image Source="blue.png"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All" />
+
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <Label Text="Tus estadísticas" FontSize="26" FontAttributes="Bold" TextColor="Black" />
+
+                <Label x:Name="HabitosCreadosLabel"
+                       Text="📋 Hábitos creados: 0"
+                       FontSize="18" TextColor="Black" />
+
+                <Label x:Name="CumplimientosRegistradosLabel"
+                       Text="✅ Cumplimientos registrados: 0"
+                       FontSize="18"
+                       TextColor="Black">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnVerCumplimientosTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!--<Label x:Name="UltimoHabitoLabel"             
+                    Text="📈 Última tarea completada"
+                    FontSize="18"
+                    TextColor="Black" /> -->
+
+                    <Label Text="🏆 Más cumplidos:" FontSize="18" FontAttributes="Bold" TextColor="Black" />
+
+                <Label x:Name="Top1Label" Text="1. -" FontSize="18" FontAttributes="Bold" TextColor="Black" />
+                <Label x:Name="Top2Label" Text="2. -" FontSize="18" FontAttributes="Bold" TextColor="Black" />
+                <Label x:Name="Top3Label" Text="3. -" FontSize="18" FontAttributes="Bold" TextColor="Black" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>

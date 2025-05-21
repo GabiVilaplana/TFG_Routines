@@ -1,31 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="Routines.Views.EditHabitPage"
              Title="Editar Hábito">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+    <AbsoluteLayout>
 
-            <Label Text="Editar hábito" FontSize="24" FontAttributes="Bold" />
+        <Image Source="blue.png"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All" />
 
-            <Entry x:Name="TituloEntry" Placeholder="Título" />
+        <ScrollView
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
 
-            <Label Text="Categoría" />
-            <Picker x:Name="CategoriaPicker" Title="Selecciona una categoría" />
+            <VerticalStackLayout Padding="20" Spacing="15">
 
-            <Label Text="Frecuencia" />
-            <Picker x:Name="FrecuenciaPicker" Title="Selecciona la frecuencia" />
+                <Label Text="Editar hábito" FontSize="24" FontAttributes="Bold" />
 
-            <Button Text="Guardar cambios" Clicked="OnGuardarCambiosClicked"
-                    BackgroundColor="#4CAF50" TextColor="White" />
+                <Entry x:Name="TituloEntry" Placeholder="Título" />
 
-            <Button Text="Eliminar hábito" Clicked="OnEliminarClicked"
-                    BackgroundColor="Red" TextColor="White" />
+                <Label Text="Categoría" />
+                <Picker x:Name="CategoriaPicker" Title="Selecciona una categoría" />
 
-            <Button Text="Cancelar" Clicked="OnCancelarClicked"
-                    BackgroundColor="#E0E0E0" TextColor="Black" />
+                <Label Text="Frecuencia" />
+                <Picker x:Name="FrecuenciaPicker" Title="Selecciona la frecuencia" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <Label Text="Modificar fecha para el calendario" />
+                <DatePicker x:Name="FechaAsignadaPicker"
+                            Format="dd/MM/yyyy"
+                            MinimumDate="{x:Static sys:DateTime.Today}" />
+
+                <Button Text="Guardar cambios" Clicked="OnGuardarCambiosClicked"
+                        BackgroundColor="#4CAF50" TextColor="White" />
+
+                <Button Text="Eliminar hábito" Clicked="OnEliminarClicked"
+                        BackgroundColor="Red" TextColor="White" />
+
+                <Button Text="Cancelar" Clicked="OnCancelarClicked"
+                        BackgroundColor="#E0E0E0" TextColor="Black" />
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </AbsoluteLayout>
 </ContentPage>

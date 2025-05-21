@@ -25,17 +25,17 @@ namespace Routines.Views
 
         private async void OnCalendarClicked(object sender, EventArgs e)
         {
-            // await Navigation.PushAsync(new CalendarPage());
+            await Navigation.PushAsync(new CalendarPage());
         }
 
         private async void OnProgressClicked(object sender, EventArgs e)
         {
-            // await Navigation.PushAsync(new ProgressPage());
+            await Navigation.PushAsync(new ProgressPage());
         }
 
         private async void OnExportClicked(object sender, EventArgs e)
         {
-            // await Navigation.PushAsync(new ExportPage());
+            await Navigation.PushAsync(new ExportPage());
         }
 
         private async void OnSettingsClicked(object sender, EventArgs e)

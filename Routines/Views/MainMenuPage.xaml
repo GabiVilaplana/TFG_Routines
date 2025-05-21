@@ -4,17 +4,35 @@
              x:Class="Routines.Views.MainMenuPage"
              Title="Rutinas">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="25">
-            <Label x:Name="SaludoLabel" FontSize="24" FontAttributes="Bold" />
-            <Label Text="¿Qué quieres hacer hoy?" FontSize="18" TextColor="Gray" />
+    <AbsoluteLayout>
 
-            <Button Text="📋 Mis hábitos" Clicked="OnHabitsClicked" />
-            <Button Text="➕ Añadir nuevo hábito" Clicked="OnAddHabitClicked" />
-            <Button Text="📆 Calendario" Clicked="OnCalendarClicked" />
-            <Button Text="📈 Ver progreso" Clicked="OnProgressClicked" />
-            <Button Text="🧾 Exportar informe" Clicked="OnExportClicked" />
-            <Button Text="⚙️ Ajustes" Clicked="OnSettingsClicked" />
-        </VerticalStackLayout>
-    </ScrollView>
+        <Image Source="blue.png"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All" />
+
+        <ScrollView
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
+
+            <VerticalStackLayout Padding="20" Spacing="25">
+                <Label x:Name="SaludoLabel"
+                       FontSize="24"
+                       FontAttributes="Bold" />
+
+                <Label Text="¿Qué quieres hacer hoy?"
+                       FontSize="18"
+                       TextColor="Gray" />
+
+                <Button Text="📋 Mis hábitos" Clicked="OnHabitsClicked" />
+                <Button Text="➕ Añadir nuevo hábito" Clicked="OnAddHabitClicked" />
+                <Button Text="📅 Calendario" Clicked="OnCalendarClicked" />
+                <Button Text="📈 Ver progreso" Clicked="OnProgressClicked" />
+                <Button Text="🧾 Exportar informe" Clicked="OnExportClicked" />
+                <Button Text="⚙️ Ajustes" Clicked="OnSettingsClicked" />
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </AbsoluteLayout>
 </ContentPage>

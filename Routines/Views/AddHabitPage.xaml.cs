@@ -18,7 +18,8 @@ namespace Routines.Views
                 Titulo = TituloEntry.Text,
                 Categoria = CategoriaPicker.SelectedItem?.ToString(),
                 Frecuencia = FrecuenciaPicker.SelectedItem?.ToString(),
-                UsuarioId = Session.UsuarioActual.Id
+                UsuarioId = Session.UsuarioActual.Id,
+                FechaAsignada = FechaAsignadaPicker.Date.Date
             };
 
             await App.Database.AddHabitAsync(nuevo);

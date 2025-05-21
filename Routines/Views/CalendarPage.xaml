@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Routines.Views.CalendarPage"
+             Title="Calendario personalizado">
+
+    <AbsoluteLayout>
+
+        <Image Source="blue.png"
+       Aspect="AspectFill"
+       AbsoluteLayout.LayoutBounds="0,0,1,1"
+       AbsoluteLayout.LayoutFlags="All" />
+
+
+        <VerticalStackLayout Padding="15" Spacing="10">
+
+            <!-- Encabezado de mes -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="◀" Clicked="OnPreviousMonthClicked" />
+                <Label x:Name="MesActualLabel" FontSize="20" FontAttributes="Bold" />
+                <Button Text="▶" Clicked="OnNextMonthClicked" />
+            </HorizontalStackLayout>
+
+            <!-- Días de la semana -->
+            <Grid ColumnSpacing="5" RowSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Lun" Grid.Column="0" HorizontalOptions="Center" />
+                <Label Text="Mar" Grid.Column="1" HorizontalOptions="Center" />
+                <Label Text="Mié" Grid.Column="2" HorizontalOptions="Center" />
+                <Label Text="Jue" Grid.Column="3" HorizontalOptions="Center" />
+                <Label Text="Vie" Grid.Column="4" HorizontalOptions="Center" />
+                <Label Text="Sáb" Grid.Column="5" HorizontalOptions="Center" />
+                <Label Text="Dom" Grid.Column="6" HorizontalOptions="Center" />
+            </Grid>
+
+            <!-- Calendario dinámico -->
+            <Grid x:Name="CalendarioGrid"
+                  RowSpacing="5" ColumnSpacing="5"
+                  Padding="5"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand" />
+
+        </VerticalStackLayout>
+    </AbsoluteLayout>
+</ContentPage>

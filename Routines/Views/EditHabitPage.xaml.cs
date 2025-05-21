@@ -27,6 +27,7 @@ namespace Routines.Views
 
             CategoriaPicker.ItemsSource = categorias;
             FrecuenciaPicker.ItemsSource = frecuencias;
+            FechaAsignadaPicker.Date = _habitOriginal.FechaAsignada ?? DateTime.Today;
 
             TituloEntry.Text = _habitOriginal.Titulo;
 
@@ -41,6 +42,8 @@ namespace Routines.Views
         private async void OnGuardarCambiosClicked(object sender, EventArgs e)
         {
             _habitOriginal.Titulo = TituloEntry.Text?.Trim();
+            _habitOriginal.FechaAsignada = FechaAsignadaPicker.Date;
+
             //_habitOriginal.Categoria = CategoriaPicker.SelectedItem?.ToString();
             //_habitOriginal.Frecuencia = FrecuenciaPicker.SelectedItem?.ToString();
 

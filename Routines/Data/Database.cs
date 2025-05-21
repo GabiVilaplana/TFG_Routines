@@ -15,6 +15,7 @@ namespace Routines.Data
 
             _database.CreateTableAsync<User>().Wait();
             _database.CreateTableAsync<Habit>().Wait();
+            _database.CreateTableAsync<HabitCheck>().Wait();
         }
 
         public Task<List<User>> GetUsersAsync()
@@ -81,5 +82,42 @@ namespace Routines.Data
                 .Where(h => h.Id == id)
                 .FirstOrDefaultAsync();
         }
+
+        // Añadir una validación a un hábito
+        public Task<int> AddHabitCheckAsync(HabitCheck check)
+        {
+            return _database.InsertAsync(check);
+        }
+
+        // Obtener validaciones por Usuario
+        public Task<List<HabitCheck>> GetChecksByUserAsync(int usuarioId)
+        {
+            return _database.Table<HabitCheck>()
+                .Where(c => c.UsuarioId == usuarioId)
+                .ToListAsync();
+        }
+
+        // Obtener validaciones por Hábito
+        public Task<List<HabitCheck>> GetChecksByHabitAsync(int habitId)
+        {
+            return _database.Table<HabitCheck>()
+                .Where(c => c.HabitId == habitId)
+                .ToListAsync();
+        }
+
+        public async Task<bool> IsHabitDoneTodayAsync(int habitId, int userId)
+        {
+            var today = DateTime.Today;
+            var tomorrow = today.AddDays(1);
+
+            var check = await _database.Table<HabitCheck>()
+                .Where(hc => hc.HabitId == habitId &&
+                             hc.UsuarioId == userId &&
+                             hc.Fecha >= today && hc.Fecha < tomorrow)
+                .FirstOrDefaultAsync();
+
+            return check != null;
+        }
+
     }
 }

@@ -4,26 +4,60 @@
              x:Class="Routines.Views.HabitsListPage"
              Title="Mis Hábitos">
 
-    <VerticalStackLayout Padding="20">
-        <ListView x:Name="HabitsList" ItemSelected="OnHabitSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10" VerticalOptions="Center">
-                            <Label Text="{Binding Titulo}" 
-                                   VerticalOptions="CenterAndExpand" 
-                                   HorizontalOptions="StartAndExpand"
-                                   FontSize="16" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Label x:Name="EmptyMessage"
-               Text="Todavía no has creado ningún hábito."
-               TextColor="Gray"
-               FontAttributes="Italic"
-               HorizontalOptions="Center"
-               IsVisible="False" /> 
-    </VerticalStackLayout>
+    <AbsoluteLayout>
+
+        <Image Source="blue.png"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All" />
+
+        <VerticalStackLayout
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Padding="20"
+            Spacing="15">
+
+            <ListView x:Name="HabitsList"
+                      ItemSelected="OnHabitSelected"
+                      VerticalOptions="FillAndExpand"
+                      SeparatorVisibility="Default">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="*,Auto"
+                                  Padding="10"
+                                  VerticalOptions="Center"
+                                  BackgroundColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToBackgroundConverter}}">
+
+                                <Label Text="{Binding Titulo}"
+                                       VerticalOptions="Center"
+                                       FontSize="16"
+                                       TextColor="Black" />
+
+                                <Button Text="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconConverter}}"
+                                        TextColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconColorConverter}}"
+                                        BackgroundColor="Transparent"
+                                        FontSize="20"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Padding="0"
+                                        Clicked="OnHabitCheckClicked"
+                                        CommandParameter="{Binding .}"
+                                        Grid.Column="1" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label x:Name="EmptyMessage"
+                   Text="Todavía no has creado ningún hábito."
+                   TextColor="Gray"
+                   FontAttributes="Italic"
+                   HorizontalOptions="Center"
+                   IsVisible="False" />
+
+        </VerticalStackLayout>
+
+    </AbsoluteLayout>
 </ContentPage>
