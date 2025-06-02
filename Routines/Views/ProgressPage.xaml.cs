@@ -13,7 +13,6 @@ namespace Routines.Views
         public ProgressPage()
         {
             InitializeComponent();
-           // LoadStats();
         }
 
         private async void LoadStats()
@@ -23,22 +22,11 @@ namespace Routines.Views
             var habitos = await App.Database.GetHabitsByUserAsync(usuarioId);
             var checks = await App.Database.GetChecksByUserAsync(usuarioId);
 
-            // Filtrar checks válidos
             var checksValidos = checks.Where(c => !string.IsNullOrEmpty(c.HabitTitulo)).ToList();
 
-            // Estadísticas
-            HabitosCreadosLabel.Text = $"📋 Hábitos creados: {habitos.Count}";
-            CumplimientosRegistradosLabel.Text = $"✅ Cumplimientos registrados: {checks.Count}";
+            HabitosCreadosLabel.Text = $"📋 {App.LocManager["CreatedHabits"]}: {habitos.Count}";
+            CumplimientosRegistradosLabel.Text = $"✅ {App.LocManager["RecordedCompliances"]}: {checks.Count}";
 
-            // Último hábito registrado
-            //var ultimoCheck = checks
-            //                    .Where(c => !string.IsNullOrWhiteSpace(c.HabitTitulo))
-            //                    .OrderByDescending(c => c.Fecha)
-            //                    .FirstOrDefault();
-
-            //UltimoHabitoLabel.Text = $"🕒 Último hábito registrado: {ultimoCheck?.HabitTitulo ?? "Ninguno"}";
-
-            // Top 3 hábitos más cumplidos (por título)
             var top = checksValidos
                 .GroupBy(c => c.HabitTitulo)
                 .Select(g => new { Titulo = g.Key, Count = g.Count() })
@@ -46,9 +34,9 @@ namespace Routines.Views
                 .Take(3)
                 .ToList();
 
-            Top1Label.Text = top.Count > 0 ? $"1. {top[0].Titulo}     {top[0].Count} veces" : "1. -";
-            Top2Label.Text = top.Count > 1 ? $"2. {top[1].Titulo}     {top[1].Count} veces" : "2. -";
-            Top3Label.Text = top.Count > 2 ? $"3. {top[2].Titulo}     {top[2].Count} veces" : "3. -";
+            Top1Label.Text = top.Count > 0 ? $"1. {top[0].Titulo}     {top[0].Count} {App.LocManager["Times"]}" : "1. -";
+            Top2Label.Text = top.Count > 1 ? $"2. {top[1].Titulo}     {top[1].Count} {App.LocManager["Times"]}" : "2. -";
+            Top3Label.Text = top.Count > 2 ? $"3. {top[2].Titulo}     {top[2].Count} {App.LocManager["Times"]}" : "3. -";
         }
 
         private async void OnVerCumplimientosTapped(object sender, EventArgs e)
@@ -60,6 +48,24 @@ namespace Routines.Views
         {
             base.OnAppearing();
             LoadStats();
+            SetUserBackground();
+
+            MessagingCenter.Subscribe<SettingsPage>(this, AppMessages.BackgroundChanged, sender =>
+            {
+                SetUserBackground();
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SettingsPage>(this, AppMessages.BackgroundChanged);
+        }
+
+        private void SetUserBackground()
+        {
+            var bg = Session.UsuarioActual?.Background ?? "blue";
+            BackgroundImage.Source = $"{bg}.png";
         }
     }
 }

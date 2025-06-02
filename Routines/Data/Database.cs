@@ -34,10 +34,10 @@ namespace Routines.Data
         {
             // Validar longitud
             if (string.IsNullOrWhiteSpace(user.Usuario) || user.Usuario.Length < 4 || user.Usuario.Length > 10)
-                throw new ArgumentException("El nombre de usuario debe tener entre 4 y 10 caracteres.");
+                throw new ArgumentException("The username must be between 4 and 10 characters.");
 
             if (string.IsNullOrWhiteSpace(user.Contraseña) || user.Contraseña.Length < 4 || user.Contraseña.Length > 10)
-                throw new ArgumentException("La contraseña debe tener entre 4 y 10 caracteres.");
+                throw new ArgumentException("The password must be between 4 and 10 characters.");
 
             // Validar duplicado
             var existente = await _database.Table<User>()
@@ -45,7 +45,7 @@ namespace Routines.Data
                 .FirstOrDefaultAsync();
 
             if (existente != null)
-                throw new InvalidOperationException("Ese nombre de usuario ya está en uso.");
+                throw new InvalidOperationException("That username is already in use.");
 
             return await _database.InsertAsync(user);
         }
@@ -118,6 +118,12 @@ namespace Routines.Data
 
             return check != null;
         }
+
+        public Task<int> UpdateUserAsync(User user)
+        {
+            return _database.UpdateAsync(user);
+        }
+
 
     }
 }

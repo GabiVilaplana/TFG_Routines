@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BackgroundColor" xml:space="preserve">
+    <value>Background color </value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ComplianceList" xml:space="preserve">
+    <value>Compliance List </value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="CreatedHabits" xml:space="preserve">
+    <value>Created Habits</value>
+  </data>
+  <data name="CustomCalendar" xml:space="preserve">
+    <value>Custom calendar</value>
+  </data>
+  <data name="Daily" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>Are you sure you want to eliminate this habit?</value>
+  </data>
+  <data name="EditHabit" xml:space="preserve">
+    <value>Edit Habit</value>
+  </data>
+  <data name="EmptyTitleMassage" xml:space="preserve">
+    <value>The title cannot be empty.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Exercise" xml:space="preserve">
+    <value>Exercise</value>
+  </data>
+  <data name="ExportNotAvailable" xml:space="preserve">
+    <value>Export only available on Android</value>
+  </data>
+  <data name="ExportTitle" xml:space="preserve">
+    <value>Export report</value>
+  </data>
+  <data name="ExportToPDF" xml:space="preserve">
+    <value>📤 Export to PDF</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Fri</value>
+  </data>
+  <data name="GenerateReport" xml:space="preserve">
+    <value>Generate report</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="Greeting" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="HabitCreated" xml:space="preserve">
+    <value>The habit has been created.</value>
+  </data>
+  <data name="HabitDeleted" xml:space="preserve">
+    <value>Habit successfully deleted.</value>
+  </data>
+  <data name="HabitMarkedDone" xml:space="preserve">
+    <value>Habit '{0}' marked as done today.</value>
+  </data>
+  <data name="HabitTitle" xml:space="preserve">
+    <value>Habit Title</value>
+  </data>
+  <data name="HabitUpdated" xml:space="preserve">
+    <value>Habit updated successfully.</value>
+  </data>
+  <data name="Health" xml:space="preserve">
+    <value>Health</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="LanguageChanged" xml:space="preserve">
+    <value>Language changed </value>
+  </data>
+  <data name="LanguageChangedAdvice" xml:space="preserve">
+    <value>The language has been changed successfully.</value>
+  </data>
+  <data name="Leisure" xml:space="preserve">
+    <value>Leisure</value>
+  </data>
+  <data name="MainMenuPrompt" xml:space="preserve">
+    <value>What do you want to do today?</value>
+  </data>
+  <data name="MenuAddHabit" xml:space="preserve">
+    <value>➕ Add new habit</value>
+  </data>
+  <data name="MenuCalendar" xml:space="preserve">
+    <value> 📅 Calendar</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value> 🧾 Export report</value>
+  </data>
+  <data name="MenuMyHabits" xml:space="preserve">
+    <value>📋 My habits</value>
+  </data>
+  <data name="MenuProgress" xml:space="preserve">
+    <value> 📈 View progress</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value> ⚙️ Settings</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="Monthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="MyHabits" xml:space="preserve">
+    <value>My habits </value>
+  </data>
+  <data name="NewHabit" xml:space="preserve">
+    <value>New Habit </value>
+  </data>
+  <data name="NoHabitsMessage" xml:space="preserve">
+    <value> You haven't created any habits yet.</value>
+  </data>
+  <data name="NoTasks" xml:space="preserve">
+    <value>No tasks</value>
+  </data>
+  <data name="NoTasksMessage" xml:space="preserve">
+    <value>There are no tasks for that day</value>
+  </data>
+  <data name="NoTasksTitle" xml:space="preserve">
+    <value>No tasks</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Orange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="PdfGenerated" xml:space="preserve">
+    <value>PDF generated in</value>
+  </data>
+  <data name="Purple" xml:space="preserve">
+    <value>Purple</value>
+  </data>
+  <data name="RecordedCompliances" xml:space="preserve">
+    <value>Recorded compliances</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="Registered" xml:space="preserve">
+    <value>Registered</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveConfirm" xml:space="preserve">
+    <value>Remove '{0}' from the list?</value>
+  </data>
+  <data name="Removing" xml:space="preserve">
+    <value>Removing...</value>
+  </data>
+  <data name="ReportTitle" xml:space="preserve">
+    <value>Habits Report </value>
+  </data>
+  <data name="Routines" xml:space="preserve">
+    <value>Routines</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SelectCategory" xml:space="preserve">
+    <value>Select category</value>
+  </data>
+  <data name="SelectFrequency" xml:space="preserve">
+    <value>Select frequency</value>
+  </data>
+  <data name="SessionNotFound" xml:space="preserve">
+    <value>Session not found.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Study" xml:space="preserve">
+    <value>Study</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="TasksOf" xml:space="preserve">
+    <value>Tasks of </value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>times</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TopHabits" xml:space="preserve">
+    <value>Most completed habits </value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wed</value>
+  </data>
+  <data name="Weekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>Work</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="YourStatistics" xml:space="preserve">
+    <value>Your statistics </value>
+  </data>
+</root>

@@ -32,22 +32,22 @@ namespace Routines.Platforms.Android.Exporters
 
             paint.TextSize = 20;
             paint.FakeBoldText = true;
-            canvas.DrawText($"Informe de hábitos – {usuario}", x, y, paint);
+            canvas.DrawText($"{App.LocManager["ReportTitle"]} – {usuario}", x, y, paint);
 
             paint.TextSize = 14;
             paint.FakeBoldText = false;
 
             y += 40;
-            canvas.DrawText($"Fecha: {DateTime.Now:dd/MM/yyyy}", x, y, paint);
+            canvas.DrawText($"{App.LocManager["Date"]}: {DateTime.Now:dd/MM/yyyy}", x, y, paint);
 
             y += 40;
-            canvas.DrawText($"📋 Hábitos creados: {habitos.Count}", x, y, paint);
+            canvas.DrawText($"📋 {App.LocManager["CreatedHabits"]}: {habitos.Count}", x, y, paint);
 
             y += 30;
-            canvas.DrawText($"✅ Cumplimientos registrados: {checks.Count}", x, y, paint);
+            canvas.DrawText($"✅ {App.LocManager["RecordedCompliances"]}: {checks.Count}", x, y, paint);
 
             y += 30;
-            canvas.DrawText("🏆 Top hábitos más cumplidos:", x, y, paint);
+            canvas.DrawText($"🏆 {App.LocManager["TopHabits"]}:", x, y, paint);
 
             var top = checks
                 .GroupBy(c => c.HabitTitulo)
@@ -59,11 +59,11 @@ namespace Routines.Platforms.Android.Exporters
             foreach (var h in top)
             {
                 y += 25;
-                canvas.DrawText($"- {h.Titulo}: {h.Count} veces", x + 20, y, paint);
+                canvas.DrawText($"- {h.Titulo}: {h.Count} {App.LocManager["Times"]}", x + 20, y, paint);
             }
 
             y += 40;
-            canvas.DrawText("📄 Lista de cumplimientos:", x, y, paint);
+            canvas.DrawText($"📄 {App.LocManager["ComplianceList"]}:", x, y, paint);
 
             foreach (var c in checks.OrderByDescending(c => c.Fecha))
             {
@@ -85,7 +85,7 @@ namespace Routines.Platforms.Android.Exporters
 
             pdfDoc.Close();
 
-            Toast.MakeText(context, $"PDF generado en: {file.AbsolutePath}", ToastLength.Long).Show();
+            Toast.MakeText(context, $"{App.LocManager["PdfGenerated"]}: {file.AbsolutePath}", ToastLength.Long).Show();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Routines.Views
         {
             if (Session.UsuarioActual == null)
             {
-                await DisplayAlert("Error", "Sesión no encontrada.", "OK");
+                await DisplayAlert("Error", App.LocManager["SessionNotFound"], "OK");
                 await Navigation.PopAsync();
                 return;
             }
@@ -37,13 +37,20 @@ namespace Routines.Views
             EmptyMessage.IsVisible = allHabits.Count == 0;
         }
 
-
-        private async void OnHabitSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void OnHabitSelected(object sender, SelectionChangedEventArgs e)
         {
-            if (e.SelectedItem is Habit selectedHabit)
+            if (e.CurrentSelection.FirstOrDefault() is Habit selectedHabit)
             {
                 await Navigation.PushAsync(new EditHabitPage(selectedHabit));
                 HabitsList.SelectedItem = null;
+            }
+        }
+
+        private async void OnHabitTapped(object sender, TappedEventArgs e)
+        {
+            if (e.Parameter is Habit habit)
+            {
+                await Navigation.PushAsync(new EditHabitPage(habit));
             }
         }
 
@@ -55,7 +62,13 @@ namespace Routines.Views
 
                 if (hechoHoy)
                 {
-                    bool confirmarEliminar = await DisplayAlert("Eliminar hábito", $"¿Eliminar '{habit.Titulo}' de la lista?", "Sí", "No");
+                    bool confirmarEliminar = await DisplayAlert(
+                        App.LocManager["Remove"],
+                        string.Format(App.LocManager["RemoveConfirm"], habit.Titulo),
+                        App.LocManager["Yes"],
+                        App.LocManager["No"]
+                    );
+
                     if (confirmarEliminar)
                     {
                         await App.Database.DeleteHabitAsync(habit);
@@ -69,11 +82,11 @@ namespace Routines.Views
                     HabitId = habit.Id,
                     Fecha = DateTime.Today,
                     UsuarioId = Session.UsuarioActual.Id,
-                    HabitTitulo = habit.Titulo // ?? Esto es esencial
+                    HabitTitulo = habit.Titulo
                 };
 
                 await App.Database.AddHabitCheckAsync(check);
-                await DisplayAlert("Registrado", $"Hábito '{habit.Titulo}' marcado como hecho hoy.", "OK");
+                await DisplayAlert(App.LocManager["Registered"], string.Format(App.LocManager["HabitMarkedDone"], habit.Titulo), "OK");
                 LoadHabits();
             }
         }
@@ -82,6 +95,24 @@ namespace Routines.Views
         {
             base.OnAppearing();
             LoadHabits();
+            SetUserBackground();
+
+            MessagingCenter.Subscribe<SettingsPage>(this, AppMessages.BackgroundChanged, sender =>
+            {
+                SetUserBackground();
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SettingsPage>(this, AppMessages.BackgroundChanged);
+        }
+
+        private void SetUserBackground()
+        {
+            var bg = Session.UsuarioActual?.Background ?? "blue";
+            BackgroundImage.Source = $"{bg}.png";
         }
     }
 }

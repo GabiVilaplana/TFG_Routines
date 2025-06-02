@@ -1,11 +1,15 @@
 ﻿using Routines.Data;
-using System.IO;
+using Routines.Resources.Localization;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 
 namespace Routines
 {
     public partial class App : Application
     {
+        public static LocalizationResourceManager LocManager { get; private set; }
+
         private static Database database;
 
         public static Database Database
@@ -25,6 +29,10 @@ namespace Routines
         public App()
         {
             InitializeComponent();
+
+            LocManager = new LocalizationResourceManager(AppResources.ResourceManager);
+            Current.Resources["Loc"] = LocManager;
+
             MainPage = new AppShell();
         }
     }

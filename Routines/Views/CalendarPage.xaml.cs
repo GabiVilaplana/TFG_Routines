@@ -1,4 +1,5 @@
 using Routines.Utils;
+using Routines.Resources.Localization;
 using System.Globalization;
 
 namespace Routines.Views
@@ -10,7 +11,57 @@ namespace Routines.Views
         public CalendarPage()
         {
             InitializeComponent();
-            _ = MostrarMes(_fechaActual); // sin await si es desde OnAppearing o constructor
+            BindingContext = App.LocManager;
+
+            // Cargar días de la semana traducidos
+            var dias = new[] {
+                App.LocManager["Monday"],
+                App.LocManager["Tuesday"],
+                App.LocManager["Wednesday"],
+                App.LocManager["Thursday"],
+                App.LocManager["Friday"],
+                App.LocManager["Saturday"],
+                App.LocManager["Sunday"]
+            };
+
+            for (int i = 0; i < 7; i++)
+            {
+                var label = new Label
+                {
+                    Text = dias[i],
+                    HorizontalOptions = LayoutOptions.Center
+                };
+
+                Grid.SetColumn(label, i);
+                Grid.SetRow(label, 0);
+                DiasSemanaGrid.Children.Add(label);
+            }
+
+            _ = MostrarMes(_fechaActual);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            SetUserBackground();
+
+            MessagingCenter.Subscribe<SettingsPage>(this, AppMessages.BackgroundChanged, (sender) =>
+            {
+                SetUserBackground();
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SettingsPage>(this, AppMessages.BackgroundChanged);
+        }
+
+        private void SetUserBackground()
+        {
+            var bg = Session.UsuarioActual?.Background ?? "blue";
+            BackgroundImage.Source = $"{bg}.png";
         }
 
         private async Task MostrarMes(DateTime fecha)
@@ -21,7 +72,8 @@ namespace Routines.Views
                 .GroupBy(h => h.FechaAsignada.Value.Date)
                 .ToDictionary(g => g.Key, g => g.ToList());
 
-            MesActualLabel.Text = fecha.ToString("MMMM yyyy", CultureInfo.GetCultureInfo("es-ES"));
+            MesActualLabel.Text = fecha.ToString("MMMM yyyy", CultureInfo.CurrentCulture);
+
             CalendarioGrid.Children.Clear();
             CalendarioGrid.RowDefinitions.Clear();
             CalendarioGrid.ColumnDefinitions.Clear();
@@ -31,7 +83,7 @@ namespace Routines.Views
 
             var primerDiaDelMes = new DateTime(fecha.Year, fecha.Month, 1);
             int diasEnMes = DateTime.DaysInMonth(fecha.Year, fecha.Month);
-            int offset = ((int)primerDiaDelMes.DayOfWeek + 6) % 7; // Ajuste para que Lunes = 0
+            int offset = ((int)primerDiaDelMes.DayOfWeek + 6) % 7;
 
             int totalCeldas = offset + diasEnMes;
             int filas = (int)Math.Ceiling(totalCeldas / 7.0);
@@ -50,10 +102,10 @@ namespace Routines.Views
                 var boton = new Button
                 {
                     Text = dia.ToString(),
-                    TextColor = Colors.Black, // Mejor contraste
+                    TextColor = Colors.Black,
                     BackgroundColor = tareasPorDia.ContainsKey(fechaDia)
-                        ? Color.FromArgb("#FFD54F") // amarillo intenso
-                        : Color.FromArgb("#BBDEFB"), // azul claro
+                        ? Color.FromArgb("#FFD54F")
+                        : Color.FromArgb("#BBDEFB"),
                     CornerRadius = 6,
                     FontAttributes = FontAttributes.Bold,
                     Padding = 5
@@ -64,11 +116,17 @@ namespace Routines.Views
                     if (tareasPorDia.TryGetValue(fechaDia, out var tareas))
                     {
                         string resumen = string.Join("\n", tareas.Select(t => $"• {t.Titulo}"));
-                        await DisplayAlert($"Tareas del {fechaDia:dd/MM}", resumen, "OK");
+                        await DisplayAlert(
+                            $"{App.LocManager["TasksOf"]} {fechaDia:dd/MM}",
+                            resumen,
+                            App.LocManager["OK"]);
                     }
                     else
                     {
-                        await DisplayAlert("Sin tareas", "No hay tareas para este día.", "OK");
+                        await DisplayAlert(
+                            App.LocManager["NoTasks"],
+                            App.LocManager["NoTasksMessage"],
+                            App.LocManager["OK"]);
                     }
                 };
 

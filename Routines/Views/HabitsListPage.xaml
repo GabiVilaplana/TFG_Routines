@@ -1,63 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:loc="clr-namespace:Routines.Resources.Localization"
              x:Class="Routines.Views.HabitsListPage"
-             Title="Mis Hábitos">
+             Title="{loc:Translate MenuMyHabits}">
 
     <AbsoluteLayout>
 
-        <Image Source="blue.png"
+        <!-- Fondo dinámico -->
+        <Image x:Name="BackgroundImage"
                Aspect="AspectFill"
-               AbsoluteLayout.LayoutBounds="0,0,1,1"
-               AbsoluteLayout.LayoutFlags="All" />
+               Opacity="0.7"
+               InputTransparent="True"
+               Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
 
-        <VerticalStackLayout
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All"
-            Padding="20"
-            Spacing="15">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
 
-            <ListView x:Name="HabitsList"
-                      ItemSelected="OnHabitSelected"
-                      VerticalOptions="FillAndExpand"
-                      SeparatorVisibility="Default">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="*,Auto"
-                                  Padding="10"
-                                  VerticalOptions="Center"
-                                  BackgroundColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToBackgroundConverter}}">
+            <VerticalStackLayout Padding="20" Spacing="15">
 
-                                <Label Text="{Binding Titulo}"
-                                       VerticalOptions="Center"
-                                       FontSize="16"
-                                       TextColor="Black" />
-
-                                <Button Text="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconConverter}}"
-                                        TextColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconColorConverter}}"
-                                        BackgroundColor="Transparent"
-                                        FontSize="20"
-                                        WidthRequest="40"
-                                        HeightRequest="40"
-                                        Padding="0"
-                                        Clicked="OnHabitCheckClicked"
+                <CollectionView x:Name="HabitsList"
+                                SelectionMode="Single"
+                                SelectionChanged="OnHabitSelected">
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="5"
+                                   BorderColor="Gray"
+                                   BackgroundColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToBackgroundConverter}}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
                                         CommandParameter="{Binding .}"
-                                        Grid.Column="1" />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                        Tapped="OnHabitTapped" />
+                                </Frame.GestureRecognizers>
 
-            <Label x:Name="EmptyMessage"
-                   Text="Todavía no has creado ningún hábito."
-                   TextColor="Gray"
-                   FontAttributes="Italic"
-                   HorizontalOptions="Center"
-                   IsVisible="False" />
+                                <Grid ColumnDefinitions="*,Auto"
+                                      VerticalOptions="Center">
 
-        </VerticalStackLayout>
+                                    <Label Text="{Binding Titulo}"
+                                           VerticalOptions="Center"
+                                           FontSize="16"
+                                           TextColor="Black" /> 
+
+                                    <Button Text="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconConverter}}"
+                                            TextColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconColorConverter}}"
+                                            BackgroundColor="Transparent"
+                                            FontSize="20"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            Padding="0"
+                                            Clicked="OnHabitCheckClicked"
+                                            CommandParameter="{Binding .}"
+                                            Grid.Column="1" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label x:Name="EmptyMessage"
+                       Text="{loc:Translate NoHabitsMessage}"
+                       TextColor="Gray"
+                       FontAttributes="Italic"
+                       HorizontalOptions="Center"
+                       IsVisible="False" />
+
+            </VerticalStackLayout>
+        </ScrollView>
 
     </AbsoluteLayout>
 </ContentPage>

@@ -24,5 +24,27 @@ namespace Routines.Views
                 .OrderByDescending(c => c.Fecha)
                 .ToList();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetUserBackground();
+
+            MessagingCenter.Subscribe<SettingsPage>(this, AppMessages.BackgroundChanged, sender =>
+            {
+                SetUserBackground();
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SettingsPage>(this, AppMessages.BackgroundChanged);
+        }
+
+        private void SetUserBackground()
+        {
+            var bg = Session.UsuarioActual?.Background ?? "blue";
+            BackgroundImage.Source = $"{bg}.png";
+        }
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.Maui.Controls;
 using Routines.Models;
+using Routines.Resources.Localization;
 using Routines.Utils;
 
 namespace Routines.Views
@@ -9,6 +10,24 @@ namespace Routines.Views
         public AddHabitPage()
         {
             InitializeComponent();
+            BindingContext = App.LocManager;
+
+            // Cargar categorías traducidas
+            CategoriaPicker.ItemsSource = new List<string>
+            {
+                App.LocManager["Health"],
+                App.LocManager["Study"],
+                App.LocManager["Work"],
+                App.LocManager["Exercise"],
+                App.LocManager["Leisure"]
+            };
+
+            FrecuenciaPicker.ItemsSource = new List<string>
+            {
+                App.LocManager["Daily"],
+                App.LocManager["Weekly"],
+                App.LocManager["Monthly"]
+            };
         }
 
         private async void OnGuardarClicked(object sender, EventArgs e)
@@ -23,8 +42,31 @@ namespace Routines.Views
             };
 
             await App.Database.AddHabitAsync(nuevo);
-            await DisplayAlert("Guardado", "El hábito ha sido creado correctamente.", "OK");
+
+            await DisplayAlert(App.LocManager["Saved"], App.LocManager["HabitCreated"], App.LocManager["OK"]);
             await Navigation.PopAsync();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetUserBackground();
+
+            MessagingCenter.Subscribe<SettingsPage>(this, AppMessages.BackgroundChanged, sender =>
+            {
+                SetUserBackground();
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SettingsPage>(this, AppMessages.BackgroundChanged);
+        }
+
+        private void SetUserBackground()
+        {
+            var bg = Session.UsuarioActual?.Background ?? "blue";
+            BackgroundImage.Source = $"{bg}.png";
         }
     }
 }

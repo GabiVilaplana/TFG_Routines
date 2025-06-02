@@ -2,6 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Routines.Utils"
+             xmlns:loc="clr-namespace:Routines.Resources.Localization"
              x:Class="Routines.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -13,7 +14,10 @@
             <local:BoolToIconConverter x:Key="BoolToIconConverter" />
             <local:BoolToIconColorConverter x:Key="BoolToIconColorConverter" />
             <local:BoolToBackgroundConverter x:Key="BoolToBackgroundConverter" />
-            
+
+            <local:BackgroundToImageConverter x:Key="BackgroundToImageConverter" />
+            <loc:TranslateExtension x:Key="Loc" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

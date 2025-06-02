@@ -2,15 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:loc="clr-namespace:Routines.Resources.Localization"
              x:Class="Routines.Views.AddHabitPage"
-             Title="Nuevo Hábito">
+             Title="{loc:Translate NewHabit}">
 
     <AbsoluteLayout>
 
-        <Image Source="blue.png"
+        <Image x:Name="BackgroundImage"
                Aspect="AspectFill"
-               AbsoluteLayout.LayoutBounds="0,0,1,1"
-               AbsoluteLayout.LayoutFlags="All" />
+               Opacity="0.7"
+               InputTransparent="True"
+               Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
 
         <ScrollView
             AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -18,39 +20,24 @@
 
             <VerticalStackLayout Padding="20" Spacing="15">
 
-                <Entry x:Name="TituloEntry" Placeholder="Título del hábito" />
+                <Entry x:Name="TituloEntry"
+                       Placeholder="{loc:Translate HabitTitle}" />
 
-                <Label Text="Categoría" />
-                <Picker x:Name="CategoriaPicker" Title="Selecciona una categoría">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Salud</x:String>
-                            <x:String>Estudios</x:String>
-                            <x:String>Trabajo</x:String>
-                            <x:String>Ejercicio</x:String>
-                            <x:String>Ocio</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Label Text="{loc:Translate Category}" />
+                <Picker x:Name="CategoriaPicker"
+                        Title="{loc:Translate SelectCategory}" />
 
-                <Label Text="Frecuencia" />
-                <Picker x:Name="FrecuenciaPicker" Title="Selecciona la frecuencia">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Diaria</x:String>
-                            <x:String>Semanal</x:String>
-                            <x:String>Mensual</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Label Text="{loc:Translate Frequency}" />
+                <Picker x:Name="FrecuenciaPicker"
+                        Title="{loc:Translate SelectFrequency}" />
 
-                <Label Text="Fecha para el calendario" />
+                <Label Text="{loc:Translate Date}" />
                 <DatePicker x:Name="FechaAsignadaPicker"
                             Date="{x:Static sys:DateTime.Now}"
                             Format="dd/MM/yyyy"
                             MinimumDate="{x:Static sys:DateTime.Today}" />
 
-                <Button Text="Guardar" Clicked="OnGuardarClicked" />
+                <Button Text="{loc:Translate Save}" Clicked="OnGuardarClicked" />
 
             </VerticalStackLayout>
         </ScrollView>

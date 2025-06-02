@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:loc="clr-namespace:Routines.Resources.Localization"
              x:Class="Routines.Views.MainMenuPage"
-             Title="Rutinas">
+             Title="{loc:Translate Routines}">
 
     <AbsoluteLayout>
 
-        <Image Source="blue.png"
+        <Image x:Name="BackgroundImage"
                Aspect="AspectFill"
-               AbsoluteLayout.LayoutBounds="0,0,1,1"
-               AbsoluteLayout.LayoutFlags="All" />
+               Opacity="0.7"
+               InputTransparent="True"
+               Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
 
-        <ScrollView
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
 
             <VerticalStackLayout Padding="20" Spacing="25">
+
+                <!-- Ahora enlazamos el saludo dinámicamente -->
                 <Label x:Name="SaludoLabel"
                        FontSize="24"
-                       FontAttributes="Bold" />
-
-                <Label Text="¿Qué quieres hacer hoy?"
+                       FontAttributes="Bold"
+                       Text="{Binding GreetingLabel}" />
+                
+                <Label Text="{loc:Translate MainMenuPrompt}"
                        FontSize="18"
                        TextColor="Gray" />
 
-                <Button Text="📋 Mis hábitos" Clicked="OnHabitsClicked" />
-                <Button Text="➕ Añadir nuevo hábito" Clicked="OnAddHabitClicked" />
-                <Button Text="📅 Calendario" Clicked="OnCalendarClicked" />
-                <Button Text="📈 Ver progreso" Clicked="OnProgressClicked" />
-                <Button Text="🧾 Exportar informe" Clicked="OnExportClicked" />
-                <Button Text="⚙️ Ajustes" Clicked="OnSettingsClicked" />
+                <Button Text="{loc:Translate MenuMyHabits}" Clicked="OnHabitsClicked" />
+                <Button Text="{loc:Translate MenuAddHabit}" Clicked="OnAddHabitClicked" />
+                <Button Text="{loc:Translate MenuCalendar}" Clicked="OnCalendarClicked" />
+                <Button Text="{loc:Translate MenuProgress}" Clicked="OnProgressClicked" />
+                <Button Text="{loc:Translate MenuExport}" Clicked="OnExportClicked" />
+                <Button Text="{loc:Translate MenuSettings}" Clicked="OnSettingsClicked" />
+
             </VerticalStackLayout>
-
         </ScrollView>
-
     </AbsoluteLayout>
 </ContentPage>

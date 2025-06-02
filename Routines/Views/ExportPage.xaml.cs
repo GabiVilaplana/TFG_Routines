@@ -28,8 +28,30 @@ namespace Routines.Views
             var context = Platform.CurrentActivity ?? Android.App.Application.Context;
             AndroidPdfExporter.CrearInforme(context, usuario, habitos, checks);
 #else
-    await DisplayAlert("Error", "Exportación solo disponible en Android", "OK");
+            await DisplayAlert(App.LocManager["Error"], App.LocManager["ExportNotAvailable"], "OK");
 #endif
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetUserBackground();
+
+            MessagingCenter.Subscribe<SettingsPage>(this, AppMessages.BackgroundChanged, sender =>
+            {
+                SetUserBackground();
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SettingsPage>(this, AppMessages.BackgroundChanged);
+        }
+
+        private void SetUserBackground()
+        {
+            var bg = Session.UsuarioActual?.Background ?? "blue";
+            BackgroundImage.Source = $"{bg}.png";
         }
     }
 }

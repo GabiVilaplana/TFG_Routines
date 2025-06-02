@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:loc="clr-namespace:Routines.Resources.Localization"
+             x:Class="Routines.Views.SettingsPage"
+             Title="{loc:Translate Settings}">
+
+    <Grid>
+        <Image x:Name="BackgroundImage"
+               Aspect="AspectFill"
+               Opacity="0.7"
+               InputTransparent="True"
+               Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
+
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="25">
+
+                <Label Text="{loc:Translate BackgroundColor}" FontAttributes="Bold" FontSize="18" />
+
+                <Grid ColumnSpacing="15" RowSpacing="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Text="{loc:Translate Blue}" Clicked="OnBackgroundSelected" CommandParameter="blue" BackgroundColor="#2196F3" TextColor="White" />
+                    <Button Grid.Row="0" Grid.Column="1" Text="{loc:Translate Green}" Clicked="OnBackgroundSelected" CommandParameter="green" BackgroundColor="#4CAF50" TextColor="White" />
+                    <Button Grid.Row="0" Grid.Column="2" Text="{loc:Translate Red}" Clicked="OnBackgroundSelected" CommandParameter="red" BackgroundColor="#F44336" TextColor="White" />
+                    
+                    <Button Grid.Row="1" Grid.Column="0" Text="{loc:Translate Yellow}" Clicked="OnBackgroundSelected" CommandParameter="yellow" BackgroundColor="#FFEB3B" TextColor="Black" />
+                    <Button Grid.Row="1" Grid.Column="1" Text="{loc:Translate Orange}" Clicked="OnBackgroundSelected" CommandParameter="orange" BackgroundColor="#FFA726" TextColor="White" />
+                    <Button Grid.Row="1" Grid.Column="2" Text="{loc:Translate Purple}" Clicked="OnBackgroundSelected" CommandParameter="purple" BackgroundColor="#9C27B0" TextColor="White" />
+                </Grid>
+
+                <Label Text="{loc:Translate Language}" FontAttributes="Bold" FontSize="18" />
+
+                <Picker x:Name="LanguagePicker" SelectedIndexChanged="OnLanguageSelected">
+                    <Picker.Items>
+                        <x:String>Español</x:String>
+                        <x:String>English</x:String>
+                    </Picker.Items>
+                </Picker>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

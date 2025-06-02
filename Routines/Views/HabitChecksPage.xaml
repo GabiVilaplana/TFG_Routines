@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Routines.Views.HabitChecksPage"
-             Title="Cumplimientos registrados">
+             Title="{Binding Source={StaticResource Loc}, Path=RecordedCompliances}">
 
     <AbsoluteLayout>
-        <Image Source="blue.png"
+        <Image x:Name="BackgroundImage"
                Aspect="AspectFill"
-               AbsoluteLayout.LayoutBounds="0,0,1,1"
-               AbsoluteLayout.LayoutFlags="All" />
+               Opacity="0.7"
+               InputTransparent="True"
+               Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
 
         <ListView x:Name="ChecksList"
                   AbsoluteLayout.LayoutBounds="0,0,1,1"

@@ -1,20 +1,22 @@
 using Microsoft.Maui.Controls;
 using Routines.Models;
+using Routines.Resources.Localization;
 using Routines.Utils;
 
 namespace Routines.Views
 {
     public partial class EditHabitPage : ContentPage
     {
-        //private readonly Habit _habitOriginal;
         private Habit? _habitOriginal;
 
         public EditHabitPage(Habit habit)
         {
             InitializeComponent();
 
+            BindingContext = App.LocManager;
+
             if (habit == null)
-                throw new ArgumentNullException(nameof(habit), "El hábito no puede ser nulo");
+                throw new ArgumentNullException(nameof(habit), "The habit cannot be null");
 
             _habitOriginal = habit;
             CargarDatos();
@@ -22,10 +24,10 @@ namespace Routines.Views
 
         private void CargarDatos()
         {
-            var categorias = new List<string> { "Salud", "Estudio", "Trabajo", "Ocio", "Otro" };
-            var frecuencias = new List<string> { "Diaria", "Semanal", "Mensual" };
+            var categorias = new List<string> { "Health", "Study", "Work", "Leisure", "Other" };
+            var frecuencias = new List<string> { "Daily", "Weekly", "Monthly" };
 
-            CategoriaPicker.ItemsSource = categorias;
+             CategoriaPicker.ItemsSource = categorias;
             FrecuenciaPicker.ItemsSource = frecuencias;
             FechaAsignadaPicker.Date = _habitOriginal.FechaAsignada ?? DateTime.Today;
 
@@ -44,27 +46,30 @@ namespace Routines.Views
             _habitOriginal.Titulo = TituloEntry.Text?.Trim();
             _habitOriginal.FechaAsignada = FechaAsignadaPicker.Date;
 
-            //_habitOriginal.Categoria = CategoriaPicker.SelectedItem?.ToString();
-            //_habitOriginal.Frecuencia = FrecuenciaPicker.SelectedItem?.ToString();
-
             if (string.IsNullOrWhiteSpace(_habitOriginal.Titulo))
             {
-                await DisplayAlert("Error", "El título no puede estar vacío.", "OK");
+                await DisplayAlert(App.LocManager["Error"], App.LocManager["EmptyTitleMessage"], "OK");
                 return;
             }
 
             await App.Database.UpdateHabitAsync(_habitOriginal);
-            await DisplayAlert("Éxito", "Hábito actualizado correctamente.", "OK");
+            await DisplayAlert(App.LocManager["Success"], App.LocManager["HabitUpdated"], "OK");
             await Navigation.PopAsync();
         }
 
         private async void OnEliminarClicked(object sender, EventArgs e)
         {
-            bool confirm = await DisplayAlert("Confirmación", "¿Estás seguro de que quieres eliminar este hábito?", "Sí", "No");
+            bool confirm = await DisplayAlert(
+                App.LocManager["Confirmation"],
+                App.LocManager["DeleteConfirm"],
+                App.LocManager["Yes"],
+                App.LocManager["No"]
+            );
+
             if (confirm)
             {
                 await App.Database.DeleteHabitAsync(_habitOriginal);
-                await DisplayAlert("Eliminado", "Hábito eliminado correctamente.", "OK");
+                await DisplayAlert(App.LocManager["Removing"], App.LocManager["HabitDeleted"], "OK");
                 await Navigation.PopAsync();
             }
         }
@@ -73,5 +78,28 @@ namespace Routines.Views
         {
             await Navigation.PopAsync();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetUserBackground();
+
+            MessagingCenter.Subscribe<SettingsPage>(this, AppMessages.BackgroundChanged, sender =>
+            {
+                SetUserBackground();
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SettingsPage>(this, AppMessages.BackgroundChanged);
+        }
+
+        private void SetUserBackground()
+        {
+            var bg = Session.UsuarioActual?.Background ?? "blue";
+            BackgroundImage.Source = $"{bg}.png";
+        }
+
     }
 }
