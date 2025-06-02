@@ -16,10 +16,6 @@ namespace Routines.Views
         {
             base.OnAppearing();
 
-            BindingContext = App.LocManager;
-
-            SaludoLabel.Text = $"{App.LocManager["Greeting"]}, {Session.UsuarioActual?.Usuario ?? "Usuario"}";
-
             // Aplicar fondo al entrar
             SetUserBackground();
 

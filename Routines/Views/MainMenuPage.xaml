@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:loc="clr-namespace:Routines.Resources.Localization"
              x:Class="Routines.Views.MainMenuPage"
-             Title="{loc:Translate Routines}">
+             Title="{Binding Routines}">
 
     <AbsoluteLayout>
 
@@ -23,17 +23,17 @@
                        FontSize="24"
                        FontAttributes="Bold"
                        Text="{Binding GreetingLabel}" />
-                
-                <Label Text="{loc:Translate MainMenuPrompt}"
+
+                <Label Text="{Binding MainMenuPrompt}"
                        FontSize="18"
                        TextColor="Gray" />
 
-                <Button Text="{loc:Translate MenuMyHabits}" Clicked="OnHabitsClicked" />
-                <Button Text="{loc:Translate MenuAddHabit}" Clicked="OnAddHabitClicked" />
-                <Button Text="{loc:Translate MenuCalendar}" Clicked="OnCalendarClicked" />
-                <Button Text="{loc:Translate MenuProgress}" Clicked="OnProgressClicked" />
-                <Button Text="{loc:Translate MenuExport}" Clicked="OnExportClicked" />
-                <Button Text="{loc:Translate MenuSettings}" Clicked="OnSettingsClicked" />
+                <Button Text="{Binding MenuMyHabits}" Clicked="OnHabitsClicked" />
+                <Button Text="{Binding MenuAddHabit}" Clicked="OnAddHabitClicked" />
+                <Button Text="{Binding MenuCalendar}" Clicked="OnCalendarClicked" />
+                <Button Text="{Binding MenuProgress}" Clicked="OnProgressClicked" />
+                <Button Text="{Binding MenuExport}" Clicked="OnExportClicked" />
+                <Button Text="{Binding MenuSettings}" Clicked="OnSettingsClicked" />
 
             </VerticalStackLayout>
         </ScrollView>

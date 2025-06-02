@@ -16,6 +16,7 @@ namespace Routines.Views
         public ExportPage()
         {
             InitializeComponent();
+            BindingContext = App.LocManager;
         }
 
         private async void OnExportClicked(object sender, EventArgs e)

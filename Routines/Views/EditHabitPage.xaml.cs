@@ -1,4 +1,4 @@
-using Microsoft.Maui.Controls;
+ using Microsoft.Maui.Controls;
 using Routines.Models;
 using Routines.Resources.Localization;
 using Routines.Utils;
@@ -24,10 +24,23 @@ namespace Routines.Views
 
         private void CargarDatos()
         {
-            var categorias = new List<string> { "Health", "Study", "Work", "Leisure", "Other" };
-            var frecuencias = new List<string> { "Daily", "Weekly", "Monthly" };
+            var categorias = new List<string>
+            {
+                App.LocManager["Health"],
+                App.LocManager["Study"],
+                App.LocManager["Work"],
+                App.LocManager["Exercise"],
+                App.LocManager["Leisure"],
+            };
 
-             CategoriaPicker.ItemsSource = categorias;
+            var frecuencias = new List<string>
+            {
+                App.LocManager["Daily"],
+                App.LocManager["Weekly"],
+                App.LocManager["Monthly"]
+            };
+
+            CategoriaPicker.ItemsSource = categorias;
             FrecuenciaPicker.ItemsSource = frecuencias;
             FechaAsignadaPicker.Date = _habitOriginal.FechaAsignada ?? DateTime.Today;
 

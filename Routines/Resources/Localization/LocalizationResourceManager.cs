@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Resources;
 using System.Runtime.CompilerServices;
+using Routines.Utils;
 
 namespace Routines.Resources.Localization
 {
@@ -10,6 +11,7 @@ namespace Routines.Resources.Localization
     {
         private readonly ResourceManager _resourceManager;
         private CultureInfo _currentCulture;
+
 
         public LocalizationResourceManager(ResourceManager resourceManager)
         {
@@ -24,7 +26,9 @@ namespace Routines.Resources.Localization
             _currentCulture = culture;
             CultureInfo.CurrentUICulture = culture;
             CultureInfo.CurrentCulture = culture;
-            OnPropertyChanged(string.Empty); // Refresca bindings
+
+            // 🔁 Notificar cambio global para refrescar TODAS las propiedades
+            OnPropertyChanged(null); // esto es clave para que funcione en las vistas
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -33,5 +37,17 @@ namespace Routines.Resources.Localization
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+        public string GreetingLabel => $"{this["Greeting"]}, {Session.UsuarioActual?.Usuario ?? "Usuario"}";
+        public string MainMenuPrompt => this["MainMenuPrompt"];
+        public string MenuMyHabits => this["MenuMyHabits"];
+        public string MenuAddHabit => this["MenuAddHabit"];
+        public string MenuCalendar => this["MenuCalendar"];
+        public string MenuProgress => this["MenuProgress"];
+        public string MenuExport => this["MenuExport"];
+        public string MenuSettings => this["MenuSettings"];
+        public string Routines => this["Routines"]; // para el título
+        public string ExportTitle => this["ExportTitle"];
+        public string GenerateReport => this["GenerateReport"];
+        public string ExportToPDF => this["ExportToPDF"];
     }
 }
