@@ -14,25 +14,101 @@
 
         <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
                     AbsoluteLayout.LayoutFlags="All">
-            <VerticalStackLayout Padding="20" Spacing="15">
 
-                <Label Text="{loc:Translate YourStatistics}" FontSize="26" FontAttributes="Bold" TextColor="Black" />
+            <VerticalStackLayout Padding="25" Spacing="30">
 
-                <Label x:Name="HabitosCreadosLabel"
-                       FontSize="18" TextColor="Black" />
+                <!-- Encabezado -->
+                <Label Text="{loc:Translate YourStatistics}"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center" />
 
-                <Label x:Name="CumplimientosRegistradosLabel"
-                       FontSize="18"
-                       TextColor="Black">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnVerCumplimientosTapped" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <!-- Tarjeta resumen -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="18"
+                       Padding="20"
+                       HasShadow="True"
+                       BorderColor="#E0E0E0">
 
-                <Label Text="{loc:Translate TopHabits}" FontSize="18" FontAttributes="Bold" TextColor="Black" />
-                <Label x:Name="Top1Label" Text="1. -" FontSize="18" FontAttributes="Bold" TextColor="Black" />
-                <Label x:Name="Top2Label" Text="2. -" FontSize="18" FontAttributes="Bold" TextColor="Black" />
-                <Label x:Name="Top3Label" Text="3. -" FontSize="18" FontAttributes="Bold" TextColor="Black" />
+                    <VerticalStackLayout Spacing="15">
+
+                        <!-- Habitos creados -->
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Label Text="📋"
+                                   FontSize="22"
+                                   VerticalOptions="Center" />
+                            <Label x:Name="HabitosCreadosLabel"
+                                   FontSize="18"
+                                   TextColor="Black" />
+                        </HorizontalStackLayout>
+
+                        <!-- Cumplimientos (estilo botón) -->
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Label Text="✅"
+                                   FontSize="22"
+                                   VerticalOptions="Center" />
+
+                            <Frame Padding="10,5"
+                                    BackgroundColor="#E3F2FD"
+                                    CornerRadius="10"
+                                    HasShadow="False"
+                                    HorizontalOptions="Start">
+                            <Label x:Name="CumplimientosRegistradosLabel"
+                                   FontSize="17"
+                                   TextColor="#1565C0">
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnVerCumplimientosTapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Frame>
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Top hábitos completados -->
+                <Frame BackgroundColor="#FFF9C4"
+                       CornerRadius="18"
+                       Padding="20"
+                       HasShadow="True"
+                       BorderColor="#FDD835">
+
+                    <VerticalStackLayout Spacing="12">
+
+                        <Label Text="{loc:Translate TopHabits}"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               HorizontalOptions="Center" />
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="🥇" FontSize="20" />
+                            <Label x:Name="Top1Label"
+                                   FontSize="17"
+                                   TextColor="Black"
+                                   FontAttributes="Bold" />
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="🥈" FontSize="20" />
+                            <Label x:Name="Top2Label"
+                                   FontSize="17"
+                                   TextColor="Black"
+                                   FontAttributes="Bold" />
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="🥉" FontSize="20" />
+                            <Label x:Name="Top3Label"
+                                   FontSize="17"
+                                   TextColor="Black"
+                                   FontAttributes="Bold" />
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
 
             </VerticalStackLayout>
         </ScrollView>

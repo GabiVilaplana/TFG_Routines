@@ -169,7 +169,7 @@
     <value>Export report</value>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
-    <value>📤 Export to PDF</value>
+    <value>Export to PDF</value>
   </data>
   <data name="Frequency" xml:space="preserve">
     <value>Frequency</value>
@@ -220,22 +220,22 @@
     <value>What do you want to do today?</value>
   </data>
   <data name="MenuAddHabit" xml:space="preserve">
-    <value>➕ Add new habit</value>
+    <value>Add new habit</value>
   </data>
   <data name="MenuCalendar" xml:space="preserve">
-    <value> 📅 Calendar</value>
+    <value> Calendar</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value> 🧾 Export report</value>
+    <value>Export report</value>
   </data>
   <data name="MenuMyHabits" xml:space="preserve">
-    <value>📋 My habits</value>
+    <value>My habits</value>
   </data>
   <data name="MenuProgress" xml:space="preserve">
-    <value> 📈 View progress</value>
+    <value>View progress</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value> ⚙️ Settings</value>
+    <value>Settings</value>
   </data>
   <data name="Monday" xml:space="preserve">
     <value>Mon</value>
@@ -248,6 +248,9 @@
   </data>
   <data name="NewHabit" xml:space="preserve">
     <value>New Habit </value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
   </data>
   <data name="NoHabitsMessage" xml:space="preserve">
     <value> You haven't created any habits yet.</value>

@@ -14,46 +14,66 @@
                InputTransparent="True"
                Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
 
-        <ScrollView
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
 
-            <VerticalStackLayout Padding="20" Spacing="15">
+            <VerticalStackLayout Padding="25" Spacing="20">
 
                 <Label Text="{loc:Translate EditHabit}"
-                       FontSize="24"
-                       FontAttributes="Bold" />
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="Black" />
 
-                <Entry x:Name="TituloEntry"
-                       Placeholder="{loc:Translate Title}" />
+                <Frame BackgroundColor="White"
+                       CornerRadius="20"
+                       HasShadow="True"
+                       Padding="15">
 
-                <Label Text="{loc:Translate Category}" />
-                <Picker x:Name="CategoriaPicker"
-                        Title="{loc:Translate SelectCategory}" />
+                    <VerticalStackLayout Spacing="15">
 
-                <Label Text="{loc:Translate Frequency}" />
-                <Picker x:Name="FrecuenciaPicker"
-                        Title="{loc:Translate SelectFrequency}" />
+                        <Entry x:Name="TituloEntry"
+                               Placeholder="{loc:Translate Title}"
+                               FontSize="18" />
 
-                <Label Text="{loc:Translate Date}" />
-                <DatePicker x:Name="FechaAsignadaPicker"
-                            Format="dd/MM/yyyy"
-                            MinimumDate="{x:Static sys:DateTime.Today}" />
+                        <Label Text="{loc:Translate Category}" FontSize="16" />
+                        <Picker x:Name="CategoriaPicker"
+                                Title="{loc:Translate SelectCategory}" />
+
+                        <Label Text="{loc:Translate Frequency}" FontSize="16" />
+                        <Picker x:Name="FrecuenciaPicker"
+                                Title="{loc:Translate SelectFrequency}" />
+
+                        <Label Text="{loc:Translate Date}" FontSize="16" />
+                        <DatePicker x:Name="FechaAsignadaPicker"
+                                    Format="dd/MM/yyyy"
+                                    MinimumDate="{x:Static sys:DateTime.Today}" />
+
+                    </VerticalStackLayout>
+                </Frame>
 
                 <Button Text="{loc:Translate Save}"
                         Clicked="OnGuardarCambiosClicked"
                         BackgroundColor="#4CAF50"
-                        TextColor="White" />
+                        TextColor="White"
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        FontAttributes="Bold" />
 
                 <Button Text="{loc:Translate Remove}"
                         Clicked="OnEliminarClicked"
-                        BackgroundColor="Red"
-                        TextColor="White" />
+                        BackgroundColor="#EF5350"
+                        TextColor="White"
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        FontAttributes="Bold" />
 
                 <Button Text="{loc:Translate Back}"
                         Clicked="OnCancelarClicked"
                         BackgroundColor="#E0E0E0"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        FontAttributes="Bold" />
 
             </VerticalStackLayout>
         </ScrollView>

@@ -18,6 +18,21 @@
             <local:BackgroundToImageConverter x:Key="BackgroundToImageConverter" />
             <loc:TranslateExtension x:Key="Loc" />
 
+            <Style x:Key="iOSMenuButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="BackgroundColor" Value="#FFFFFFCC" />
+                <!-- blanco translúcido -->
+                <Setter Property="TextColor" Value="#333333" />
+                <Setter Property="HeightRequest" Value="150" />
+                <Setter Property="Shadow">
+                    <Shadow Brush="Black"
+                            Opacity="0.15"
+                            Radius="6"
+                            Offset="0,4" />
+                </Setter>
+                <Setter Property="Margin" Value="0,0,0,10" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

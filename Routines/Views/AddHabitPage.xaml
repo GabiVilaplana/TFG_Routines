@@ -14,33 +14,74 @@
                InputTransparent="True"
                Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
 
-        <ScrollView
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
 
-            <VerticalStackLayout Padding="20" Spacing="15">
+            <VerticalStackLayout Padding="20" Spacing="20">
 
-                <Entry x:Name="TituloEntry"
-                       Placeholder="{loc:Translate HabitTitle}" />
+                <Label Text="{loc:Translate NewHabit}"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="Black" />
 
-                <Label Text="{loc:Translate Category}" />
-                <Picker x:Name="CategoriaPicker"
-                        Title="{loc:Translate SelectCategory}" />
+                <!-- Sección Título -->
+                <Frame BackgroundColor="#FFFFFFDD"
+                       CornerRadius="16"
+                       Padding="15"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="{loc:Translate HabitTitle}" FontSize="14" />
+                        <Entry x:Name="TituloEntry"
+                               Placeholder="{loc:Translate Title}"
+                               FontSize="18"
+                               BackgroundColor="White"
+                               HeightRequest="45"
+                               Margin="0,0,0,5" />
+                    </VerticalStackLayout>
+                </Frame>
 
-                <Label Text="{loc:Translate Frequency}" />
-                <Picker x:Name="FrecuenciaPicker"
-                        Title="{loc:Translate SelectFrequency}" />
+                <!-- Sección Categoría y Frecuencia -->
+                <Frame BackgroundColor="#FFFFFFDD"
+                       CornerRadius="16"
+                       Padding="15"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="{loc:Translate Category}" FontSize="14" />
+                        <Picker x:Name="CategoriaPicker"
+                                Title="{loc:Translate SelectCategory}" />
 
-                <Label Text="{loc:Translate Date}" />
-                <DatePicker x:Name="FechaAsignadaPicker"
-                            Date="{x:Static sys:DateTime.Now}"
-                            Format="dd/MM/yyyy"
-                            MinimumDate="{x:Static sys:DateTime.Today}" />
+                        <Label Text="{loc:Translate Frequency}" FontSize="14" />
+                        <Picker x:Name="FrecuenciaPicker"
+                                Title="{loc:Translate SelectFrequency}" />
+                    </VerticalStackLayout>
+                </Frame>
 
-                <Button Text="{loc:Translate Save}" Clicked="OnGuardarClicked" />
+                <!-- Fecha -->
+                <Frame BackgroundColor="#FFFFFFDD"
+                       CornerRadius="16"
+                       Padding="15"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="{loc:Translate Date}" FontSize="14" />
+                        <DatePicker x:Name="FechaAsignadaPicker"
+                                    Date="{x:Static sys:DateTime.Now}"
+                                    Format="dd/MM/yyyy"
+                                    MinimumDate="{x:Static sys:DateTime.Today}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- CTA -->
+                <Button Text="{loc:Translate Save}"
+                        Clicked="OnGuardarClicked"
+                        BackgroundColor="#2196F3"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HeightRequest="50"
+                        CornerRadius="14"
+                        Margin="0,20,0,0" />
 
             </VerticalStackLayout>
         </ScrollView>
-
     </AbsoluteLayout>
 </ContentPage>

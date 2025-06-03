@@ -43,7 +43,7 @@ namespace Routines.Views
 
             await App.Database.AddHabitAsync(nuevo);
 
-            await DisplayAlert(App.LocManager["Saved"], App.LocManager["HabitCreated"], App.LocManager["OK"]);
+            await DisplayAlert(App.LocManager["Success"], App.LocManager["HabitCreated"], App.LocManager["OK"]);
             await Navigation.PopAsync();
         }
         protected override void OnAppearing()

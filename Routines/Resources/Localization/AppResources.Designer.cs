@@ -214,7 +214,7 @@ namespace Routines.Resources.Localization {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 📤 Export to PDF.
+        ///   Busca una cadena traducida similar a Export to PDF.
         /// </summary>
         internal static string ExportToPDF {
             get {
@@ -367,7 +367,7 @@ namespace Routines.Resources.Localization {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ➕ Add new habit.
+        ///   Busca una cadena traducida similar a Add new habit.
         /// </summary>
         internal static string MenuAddHabit {
             get {
@@ -376,7 +376,7 @@ namespace Routines.Resources.Localization {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a  📅 Calendar.
+        ///   Busca una cadena traducida similar a  Calendar.
         /// </summary>
         internal static string MenuCalendar {
             get {
@@ -385,7 +385,7 @@ namespace Routines.Resources.Localization {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a  🧾 Export report.
+        ///   Busca una cadena traducida similar a Export report.
         /// </summary>
         internal static string MenuExport {
             get {
@@ -394,7 +394,7 @@ namespace Routines.Resources.Localization {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 📋 My habits.
+        ///   Busca una cadena traducida similar a My habits.
         /// </summary>
         internal static string MenuMyHabits {
             get {
@@ -403,7 +403,7 @@ namespace Routines.Resources.Localization {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a  📈 View progress.
+        ///   Busca una cadena traducida similar a View progress.
         /// </summary>
         internal static string MenuProgress {
             get {
@@ -412,7 +412,7 @@ namespace Routines.Resources.Localization {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a  ⚙️ Settings.
+        ///   Busca una cadena traducida similar a Settings.
         /// </summary>
         internal static string MenuSettings {
             get {
@@ -453,6 +453,15 @@ namespace Routines.Resources.Localization {
         internal static string NewHabit {
             get {
                 return ResourceManager.GetString("NewHabit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No.
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         

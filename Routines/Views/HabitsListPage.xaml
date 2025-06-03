@@ -7,7 +7,6 @@
 
     <AbsoluteLayout>
 
-        <!-- Fondo dinámico -->
         <Image x:Name="BackgroundImage"
                Aspect="AspectFill"
                Opacity="0.7"
@@ -22,12 +21,16 @@
                 <CollectionView x:Name="HabitsList"
                                 SelectionMode="Single"
                                 SelectionChanged="OnHabitSelected">
-                    
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame Padding="10" Margin="5"
-                                   BorderColor="Gray"
-                                   BackgroundColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToBackgroundConverter}}">
+                            <Frame Padding="15"
+                                   Margin="5"
+                                   BackgroundColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToBackgroundConverter}}"
+                                   CornerRadius="20"
+                                   HasShadow="True"
+                                   BorderColor="LightGray">
+
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer
                                         CommandParameter="{Binding .}"
@@ -35,23 +38,27 @@
                                 </Frame.GestureRecognizers>
 
                                 <Grid ColumnDefinitions="*,Auto"
-                                      VerticalOptions="Center">
+                                      VerticalOptions="Center"
+                                      RowDefinitions="Auto">
 
                                     <Label Text="{Binding Titulo}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
                                            VerticalOptions="Center"
-                                           FontSize="16"
-                                           TextColor="Black" /> 
+                                           VerticalTextAlignment="Center" />
 
-                                    <Button Text="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconConverter}}"
+                                    <Button Grid.Column="1"
+                                            Text="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconConverter}}"
                                             TextColor="{Binding EstaHechoHoy, Converter={StaticResource BoolToIconColorConverter}}"
-                                            BackgroundColor="Transparent"
+                                            BackgroundColor="#F5F5F5"
+                                            CornerRadius="20"
                                             FontSize="20"
                                             WidthRequest="40"
                                             HeightRequest="40"
                                             Padding="0"
                                             Clicked="OnHabitCheckClicked"
-                                            CommandParameter="{Binding .}"
-                                            Grid.Column="1" />
+                                            CommandParameter="{Binding .}" />
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -60,13 +67,12 @@
 
                 <Label x:Name="EmptyMessage"
                        Text="{loc:Translate NoHabitsMessage}"
+                       FontSize="16"
                        TextColor="Gray"
                        FontAttributes="Italic"
                        HorizontalOptions="Center"
                        IsVisible="False" />
-
             </VerticalStackLayout>
         </ScrollView>
-
     </AbsoluteLayout>
 </ContentPage>

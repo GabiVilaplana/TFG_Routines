@@ -24,8 +24,8 @@ namespace Routines.Views
 
             var checksValidos = checks.Where(c => !string.IsNullOrEmpty(c.HabitTitulo)).ToList();
 
-            HabitosCreadosLabel.Text = $"📋 {App.LocManager["CreatedHabits"]}: {habitos.Count}";
-            CumplimientosRegistradosLabel.Text = $"✅ {App.LocManager["RecordedCompliances"]}: {checks.Count}";
+            HabitosCreadosLabel.Text = $"{App.LocManager["CreatedHabits"]}: {habitos.Count}";
+            CumplimientosRegistradosLabel.Text = $"{App.LocManager["RecordedCompliances"]}: {checks.Count}";
 
             var top = checksValidos
                 .GroupBy(c => c.HabitTitulo)

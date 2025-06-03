@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:loc="clr-namespace:Routines.Resources.Localization"
              x:Class="Routines.Views.ExportPage"
-             Title="{Binding ExportTitle}">
+             Title="{loc:Translate ExportTitle}">
 
     <AbsoluteLayout>
         <Image x:Name="BackgroundImage"
@@ -11,26 +12,49 @@
                InputTransparent="True"
                Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
 
-        <VerticalStackLayout
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All"
-            Padding="20"
-            Spacing="20"
-            VerticalOptions="Center"
-            HorizontalOptions="Center">
+        <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+              AbsoluteLayout.LayoutFlags="All">
 
-            <Label Text="{Binding GenerateReport}"
-                   FontSize="22"
-                   FontAttributes="Bold"
-                   TextColor="Black"
-                   HorizontalOptions="Center" />
+            <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="Center"
+                                 Padding="30"
+                                 Spacing="30">
 
-            <Button Text="{Binding ExportToPDF}"
-                    Clicked="OnExportClicked"
-                    BackgroundColor="#4CAF50"
-                    TextColor="White"
-                    WidthRequest="200"
-                    HeightRequest="50" />
-        </VerticalStackLayout>
+                <!-- Título centrado -->
+                <Label Text="{loc:Translate GenerateReport}"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center" />
+
+                <!-- Tarjeta central -->
+                <Frame Padding="25"
+                       BackgroundColor="#FFFDF5"
+                        CornerRadius="20"
+                       HasShadow="True"
+                       BorderColor="#E0E0E0"
+                       HorizontalOptions="Center">
+
+                    <VerticalStackLayout Spacing="20"
+                                         HorizontalOptions="Center">
+
+                        <!-- Icono de documento -->
+                        <Label Text="📄"
+                               FontSize="42"
+                               HorizontalOptions="Center" />
+
+                        <!-- Botón exportar -->
+                        <Button Text="{loc:Translate ExportToPDF}"
+                                Clicked="OnExportClicked"
+                                BackgroundColor="#4CAF50"
+                                TextColor="White"
+                                WidthRequest="200"
+                                HeightRequest="55"
+                                FontAttributes="Bold"
+                                CornerRadius="14" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </Grid>
     </AbsoluteLayout>
 </ContentPage>

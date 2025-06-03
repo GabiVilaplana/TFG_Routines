@@ -16,25 +16,166 @@
         <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
                     AbsoluteLayout.LayoutFlags="All">
 
-            <VerticalStackLayout Padding="20" Spacing="25">
+            <VerticalStackLayout Padding="20" Spacing="20">
 
-                <!-- Ahora enlazamos el saludo dinámicamente -->
                 <Label x:Name="SaludoLabel"
-                       FontSize="24"
+                       FontSize="26"
                        FontAttributes="Bold"
-                       Text="{Binding GreetingLabel}" />
+                       Text="{Binding GreetingLabel}"
+                       TextColor="Black" />
 
                 <Label Text="{Binding MainMenuPrompt}"
                        FontSize="18"
                        TextColor="Gray" />
 
-                <Button Text="{Binding MenuMyHabits}" Clicked="OnHabitsClicked" />
-                <Button Text="{Binding MenuAddHabit}" Clicked="OnAddHabitClicked" />
-                <Button Text="{Binding MenuCalendar}" Clicked="OnCalendarClicked" />
-                <Button Text="{Binding MenuProgress}" Clicked="OnProgressClicked" />
-                <Button Text="{Binding MenuExport}" Clicked="OnExportClicked" />
-                <Button Text="{Binding MenuSettings}" Clicked="OnSettingsClicked" />
+                <Grid ColumnSpacing="15" RowSpacing="15"
+                      HeightRequest="500">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
+                    <!-- Fila 1 -->
+                    <Frame Grid.Row="0" Grid.Column="0"
+                           BackgroundColor="#FFF9C4"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           Padding="10"
+                           HeightRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnHabitsClicked" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="📋"
+                                   FontSize="30"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding MenuMyHabits}"
+                                   FontSize="16"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="2" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame Grid.Row="0" Grid.Column="1"
+                           BackgroundColor="#FFF9C4"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           Padding="10"
+                           HeightRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAddHabitClicked" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="➕"
+                                   FontSize="30"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding MenuAddHabit}"
+                                   FontSize="16"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="2" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Fila 2 -->
+                    <Frame Grid.Row="1" Grid.Column="0"
+                           BackgroundColor="#FFF9C4"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           Padding="10"
+                           HeightRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCalendarClicked" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="📅"
+                                   FontSize="30"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding MenuCalendar}"
+                                   FontSize="16"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="2" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="1"
+                           BackgroundColor="#FFF9C4"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           Padding="10"
+                           HeightRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProgressClicked" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="📈"
+                                   FontSize="30"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding MenuProgress}"
+                                   FontSize="16"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="2" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Fila 3 -->
+                    <Frame Grid.Row="2" Grid.Column="0"
+                           BackgroundColor="#FFF9C4"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           Padding="10"
+                           HeightRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnExportClicked" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="🧾"
+                                   FontSize="30"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding MenuExport}"
+                                   FontSize="16"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="2" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="1"
+                           BackgroundColor="#FFF9C4"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           Padding="10"
+                           HeightRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSettingsClicked" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="⚙️"
+                                   FontSize="30"
+                                   HorizontalOptions="Center" />
+                            <Label Text="{Binding MenuSettings}"
+                                   FontSize="16"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="2" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </Grid>
             </VerticalStackLayout>
         </ScrollView>
     </AbsoluteLayout>

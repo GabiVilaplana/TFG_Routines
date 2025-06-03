@@ -16,7 +16,7 @@ namespace Routines
             var user = await App.Database.GetUserAsync(UsernameEntry.Text, PasswordEntry.Text);
             if (user != null)
             {
-                await DisplayAlert("Éxito", $"Bienvenido {user.Usuario}", "OK");
+                await DisplayAlert("Success", $"Welcome {user.Usuario}", "OK");
                 Routines.Utils.Session.UsuarioActual = user;
 
                 var lang = user.Language ?? "en";
@@ -32,7 +32,7 @@ namespace Routines
             }
             else
             {
-                await DisplayAlert("Error", "Usuario o contraseña incorrectos", "OK");
+                await DisplayAlert("Error", "Incorrect username or password", "OK");
             }
         }
 
@@ -47,15 +47,15 @@ namespace Routines
                 };
 
                 await App.Database.AddUserAsync(nuevoUsuario);
-                await DisplayAlert("Registrado", "Usuario creado correctamente", "OK");
+                await DisplayAlert("Registered", "Successfully created user", "OK");
             }
             catch (ArgumentException ex)
             {
-                await DisplayAlert("Validación", ex.Message, "OK");
+                await DisplayAlert("Validation", ex.Message, "OK");
             }
             catch (InvalidOperationException ex)
             {
-                await DisplayAlert("Duplicado", ex.Message, "OK");
+                await DisplayAlert("Duplicate", ex.Message, "OK");
             }
         }
         private void SetAppCulture(string lang)

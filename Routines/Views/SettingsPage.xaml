@@ -13,38 +13,74 @@
                Source="{Binding ., Converter={StaticResource BackgroundToImageConverter}}" />
 
         <ScrollView>
-            <VerticalStackLayout Padding="20" Spacing="25">
+            <VerticalStackLayout Padding="25" Spacing="30">
 
-                <Label Text="{loc:Translate BackgroundColor}" FontAttributes="Bold" FontSize="18" />
+                <!-- Sección fondo -->
+                <Frame BackgroundColor="#FFFFFFCC"
+                       CornerRadius="20"
+                       Padding="20"
+                       HasShadow="True"
+                       BorderColor="#E0E0E0">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="{loc:Translate BackgroundColor}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black" />
 
-                <Grid ColumnSpacing="15" RowSpacing="15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                        <Grid ColumnSpacing="15" RowSpacing="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                    <Button Grid.Row="0" Grid.Column="0" Text="{loc:Translate Blue}" Clicked="OnBackgroundSelected" CommandParameter="blue" BackgroundColor="#2196F3" TextColor="White" />
-                    <Button Grid.Row="0" Grid.Column="1" Text="{loc:Translate Green}" Clicked="OnBackgroundSelected" CommandParameter="green" BackgroundColor="#4CAF50" TextColor="White" />
-                    <Button Grid.Row="0" Grid.Column="2" Text="{loc:Translate Red}" Clicked="OnBackgroundSelected" CommandParameter="red" BackgroundColor="#F44336" TextColor="White" />
-                    
-                    <Button Grid.Row="1" Grid.Column="0" Text="{loc:Translate Yellow}" Clicked="OnBackgroundSelected" CommandParameter="yellow" BackgroundColor="#FFEB3B" TextColor="Black" />
-                    <Button Grid.Row="1" Grid.Column="1" Text="{loc:Translate Orange}" Clicked="OnBackgroundSelected" CommandParameter="orange" BackgroundColor="#FFA726" TextColor="White" />
-                    <Button Grid.Row="1" Grid.Column="2" Text="{loc:Translate Purple}" Clicked="OnBackgroundSelected" CommandParameter="purple" BackgroundColor="#9C27B0" TextColor="White" />
-                </Grid>
+                            <Button Grid.Row="0" Grid.Column="0" Text="{loc:Translate Blue}" Clicked="OnBackgroundSelected"
+                                    CommandParameter="blue" BackgroundColor="#2196F3" TextColor="White" CornerRadius="10" />
+                            <Button Grid.Row="0" Grid.Column="1" Text="{loc:Translate Green}" Clicked="OnBackgroundSelected"
+                                    CommandParameter="green" BackgroundColor="#4CAF50" TextColor="White" CornerRadius="10" />
+                            <Button Grid.Row="0" Grid.Column="2" Text="{loc:Translate Red}" Clicked="OnBackgroundSelected"
+                                    CommandParameter="red" BackgroundColor="#F44336" TextColor="White" CornerRadius="10" />
 
-                <Label Text="{loc:Translate Language}" FontAttributes="Bold" FontSize="18" />
+                            <Button Grid.Row="1" Grid.Column="0" Text="{loc:Translate Yellow}" Clicked="OnBackgroundSelected"
+                                    CommandParameter="yellow" BackgroundColor="#FFEB3B" TextColor="Black" CornerRadius="10" />
+                            <Button Grid.Row="1" Grid.Column="1" Text="{loc:Translate Orange}" Clicked="OnBackgroundSelected"
+                                    CommandParameter="orange" BackgroundColor="#FFA726" TextColor="White" CornerRadius="10" />
+                            <Button Grid.Row="1" Grid.Column="2" Text="{loc:Translate Purple}" Clicked="OnBackgroundSelected"
+                                    CommandParameter="purple" BackgroundColor="#9C27B0" TextColor="White" CornerRadius="10" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
 
-                <Picker x:Name="LanguagePicker" SelectedIndexChanged="OnLanguageSelected">
-                    <Picker.Items>
-                        <x:String>Español</x:String>
-                        <x:String>English</x:String>
-                    </Picker.Items>
-                </Picker>
+                <!-- Sección idioma -->
+                <Frame BackgroundColor="#FFFFFFCC"
+                       CornerRadius="20"
+                       Padding="20"
+                       HasShadow="True"
+                       BorderColor="#E0E0E0">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="{loc:Translate Language}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="Black" />
+
+                        <Picker x:Name="LanguagePicker"
+                                SelectedIndexChanged="OnLanguageSelected"
+                                FontSize="16"
+                                BackgroundColor="#F0F0F0"
+                                TextColor="Black"
+                                Title="{loc:Translate SelectLanguage}"
+                                Margin="0,5,0,0">
+                            <Picker.Items>
+                                <x:String>Español</x:String>
+                                <x:String>English</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </VerticalStackLayout>
+                </Frame>
 
             </VerticalStackLayout>
         </ScrollView>
