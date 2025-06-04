@@ -312,6 +312,9 @@
   <data name="SelectFrequency" xml:space="preserve">
     <value>Selecciona frecuencia</value>
   </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Selecciona un idioma</value>
+  </data>
   <data name="SessionNotFound" xml:space="preserve">
     <value>Sesión no encontrada.</value>
   </data>

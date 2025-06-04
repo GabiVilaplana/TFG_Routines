@@ -646,6 +646,15 @@ namespace Routines.Resources.Localization {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Select Language.
+        /// </summary>
+        internal static string SelectLanguage {
+            get {
+                return ResourceManager.GetString("SelectLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Session not found..
         /// </summary>
         internal static string SessionNotFound {
