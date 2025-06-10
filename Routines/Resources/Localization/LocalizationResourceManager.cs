@@ -45,7 +45,7 @@ namespace Routines.Resources.Localization
         public string MenuProgress => this["MenuProgress"];
         public string MenuExport => this["MenuExport"];
         public string MenuSettings => this["MenuSettings"];
-        public string Routines => this["Routines"]; // para el título
+        public string Routines => this["Routines"]; 
         public string ExportTitle => this["ExportTitle"];
         public string GenerateReport => this["GenerateReport"];
         public string ExportToPDF => this["ExportToPDF"];
